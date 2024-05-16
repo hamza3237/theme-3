@@ -1,22 +1,21 @@
 // src/index.js
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
 import './index.css';
-import Home from './pages/home/Home';
-import Product from './pages/Product/Product';
 
-ReactDOM.render(
+// Find the root element in your HTML file
+const container = document.getElementById('root');
+
+// Create a root
+const root = createRoot(container);
+
+// Initial render
+root.render(
   <React.StrictMode>
     <Router>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route index element={<Home />} />
-          <Route path="products" element={<Product />} />
-        </Route>
-      </Routes>
+      <App />
     </Router>
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );
